@@ -1,5 +1,4 @@
 #![warn(clippy::all, rust_2018_idioms)]
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
 
 #[cfg(target_arch = "wasm32")]
 fn main() {
@@ -13,7 +12,7 @@ fn main() {
     eframe::start_web(
         "the_canvas_id", // hardcode it
         web_options,
-        Box::new(|cc| Box::new(ekg::TemplateApp::new(cc))),
+        Box::new(|cc| Box::new(ekg::SignalApp::new(cc))),
     )
     .expect("failed to start eframe");
 }
